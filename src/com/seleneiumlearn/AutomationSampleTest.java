@@ -1,5 +1,6 @@
 package com.seleneiumlearn;
 
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -11,16 +12,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 
 public class AutomationSampleTest {
 
 	public static void main(String[] args) throws InterruptedException {
 		
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\gourav.c.jain\\Desktop\\chromedriver.exe");
+		
+		ChromeOptions co = new ChromeOptions();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter arguments for ChromeOptions class : ");
+		String co_input = sc.next();
+		co.addArguments(co_input);
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, co);
+		co.merge(capabilities);
 
 		WebDriver driver = new ChromeDriver(co);
 		
